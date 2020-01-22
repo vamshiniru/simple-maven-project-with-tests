@@ -12,8 +12,10 @@ pipeline {
  sh 'mvn install'
  }
  stage ('running playbook') {
+ steps {
  sh 'ansible-playbook web.yml'
  }
  }
  }
  }
+}
