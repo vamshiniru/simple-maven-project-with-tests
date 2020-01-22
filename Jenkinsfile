@@ -5,7 +5,7 @@ pipeline {
  jdk 'jdk'
  }
  stages{
- stage ('build') {
+ stages ('build') {
  steps {
  echo "code is building"
  sh 'mvn clean'
