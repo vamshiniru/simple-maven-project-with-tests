@@ -14,7 +14,7 @@ pipeline {
  }
  stage ('running playbook') {
  steps {
- sh 'ansible-playbook tomcat.yml'
+ sh 'ansible-playbook -i hosts tomcat.yml'
  }
  }
  }
