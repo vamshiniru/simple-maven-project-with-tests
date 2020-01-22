@@ -1,0 +1,31 @@
+---
+  - name: Install and configure tomcat
+    hosts: 13.126.205.227
+    become: true
+    become_method: sudo
+    become_user: root
+    tasks:
+      - name: update repos
+        yum:
+          name: "*"
+          state: latest
+      - name: Installing java
+        yum:
+          name: java-1.8.0-openjdk
+          state: present
+      - name: Downloading required tomcat
+        get_url:
+            url: http://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.30/bin/apache-tomcat-9.0.30.tar.gz
+            dest: /opt
+      - name: Extracting downloaded tomcat
+        unarchive:
+           src: "/opt/ansible/apache-tomcat-9.0.30.tar.gz"
+           dest: /opt
+           remote_src: yes
+      - name: deploy war file
+        get_url:
+            url: https://tomcat.apache.org/tomcat-9.0-doc/appdev/sample/sample.war
+            dest: /opt/apache-tomcat-9.0.30/webapps
+
+      - name: Starting tomcat
+        shell: nohup  /opt/apache-tomcat-9.0.30/bin/startup.sh &
