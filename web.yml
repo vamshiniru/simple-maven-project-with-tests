@@ -1,6 +1,6 @@
 ---
 - name: This sets up an httpd webserver
-  hosts: centos@13.126.205.227
+  hosts: webservers
   become: true
   tasks:
   - name: Install apache packages
