@@ -4,12 +4,13 @@ pipeline {
  maven 'maven'
  jdk 'jdk'
  }
- stages {
+ stages{
  stage ('build') {
  steps {
  echo "code is building"
  sh 'mvn clean'
  sh 'mvn install'
+ }
  }
  stage ('running playbook') {
  steps {
@@ -18,4 +19,4 @@ pipeline {
  }
  }
  }
-}
+
