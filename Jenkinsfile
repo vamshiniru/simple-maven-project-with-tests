@@ -14,7 +14,7 @@ pipeline {
  }
  stage ('running playbook') {
  steps {
- sh 'ansible-playbook web.yml'
+ sh 'ansible-playbook tomcat.yml'
  }
  }
  }
