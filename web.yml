@@ -1,6 +1,6 @@
 ---
 - name: This sets up an httpd webserver
-  hosts: webservers
+  hosts: all_hosts
   become: true
   tasks:
   - name: Install apache packages
